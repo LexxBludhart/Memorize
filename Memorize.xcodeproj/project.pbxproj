@@ -57,8 +57,8 @@
 			children = (
 				4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */,
 				4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */,
-				4F0609982847DFB9007C2DAE /* MemorizeApp.swift */,
 				4F06099A2847DFB9007C2DAE /* ContentView.swift */,
+				4F0609982847DFB9007C2DAE /* MemorizeApp.swift */,
 				4F06099C2847DFBA007C2DAE /* Assets.xcassets */,
 				4F06099E2847DFBA007C2DAE /* Preview Content */,
 			);
