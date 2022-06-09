@@ -27,7 +27,19 @@ struct ContentView: View {
         .foregroundColor(.red)
         .padding(.horizontal)
         
+        
+        
     }
+    
+    var defaultTheme : some View {
+        Button {
+            EmojiMemoryGame.changeTheme("default")
+            EmojiMemoryGame.emojis.shuffle()
+        } label: {
+        Image(systemName: "car")
+        }
+    }
+    
 //    var vehicleTheme: some View {
 //        Button {
 //            emojis = ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"]
@@ -68,6 +80,8 @@ struct CardView: View {
                 shape.fill(.white)
                 shape.strokeBorder(lineWidth: 4)
                 Text(card.content).font(.largeTitle)
+            } else if card.isMatched {
+                shape.opacity(0)
             } else {
                 shape.fill(.red)
             }

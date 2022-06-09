@@ -9,11 +9,32 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-     static let emojis = ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"]
+     static var emojis = ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"]
+    
+    let themes = [
+    
+        "vehicles" : ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"],
+        "animals" : ["🦎", "🐸", "🐍", "🦜", "🦄", "🦖", "🦕", "🐊", "🦤", "🦆", "🐧", "🐣", "🦨", "🐢", "🐙", "🦑", "🦭", "🦦", "🦥", "🦔", "🐷", "🐉", "🐓", "🪱"],
+        "faces" : ["🙂", "😄", "😎", "😋", "👽", "🥰", "🥸", "😇", "🥳", "😱", "🤠", "💩", "🥴", "😵", "🫥", "😑"],
+        "flags" : ["🏳️", "🏴", "🏴‍☠️", "🏁", "🚩", "🇺🇸", "🇬🇧", "🇯🇵", "🇩🇰", "🇰🇷"],
+        "zodiacs" : ["♈️", "♉️", "♊️", "♋️", "♌️", "♍️", "♎️", "♏️", "♐️", "♑️", "♒️", "♓️"],
+        "random" : ["🥨", "🛁", "📚", "🃏", "🧸", "🖥", "🚀", "🏕", "🏆", "🫧"]
+    ]
 
     static func createMemoryGame() -> MemoryGame<String> {
         MemoryGame<String>(numberOfPairsOfCards: 4) { pairIndex in
             emojis[pairIndex]
+        }
+    }
+    
+    func changeTheme(to theme: String) {
+        switch theme {
+        case "animals": EmojiMemoryGame.emojis = EmojiMemoryGame.animalEmojis
+        case "faces": EmojiMemoryGame.emojis = EmojiMemoryGame.facesEmojis
+        case "flags": EmojiMemoryGame.emojis = EmojiMemoryGame.flagsEmojis
+        case "zodiacs": EmojiMemoryGame.emojis = EmojiMemoryGame.zodiacEmojis
+        case "random": EmojiMemoryGame.emojis = EmojiMemoryGame.randomEmojis
+        default: EmojiMemoryGame.emojis = EmojiMemoryGame.defaultEmojis
         }
     }
     
