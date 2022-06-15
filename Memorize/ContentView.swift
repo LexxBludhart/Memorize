@@ -26,9 +26,6 @@ struct ContentView: View {
         }
         .foregroundColor(.red)
         .padding(.horizontal)
-        
-        
-        
     }
     
     var defaultTheme : some View {
@@ -39,35 +36,6 @@ struct ContentView: View {
         Image(systemName: "car")
         }
     }
-    
-//    var vehicleTheme: some View {
-//        Button {
-//            emojis = ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"]
-//            emojiCount = emojis.count
-//            emojis.shuffle()
-//        } label: {
-//            Image(systemName: "car")
-//        }
-//    }
-//    var facesTheme: some View {
-//        Button {
-//            emojis = ["🙂", "😄", "😎", "😋", "👽", "🥰", "🥸", "😇", "🥳", "😱", "🤠", "💩", "🥴", "😵", "🫥", "😑"]
-//            emojiCount = emojis.count
-//            emojis.shuffle()
-//        } label: {
-//            Image(systemName: "face.smiling")
-//        }
-//    }
-//    var animalTheme: some View {
-//        Button {
-//            emojis = ["🦎", "🐸", "🐍", "🦜", "🦄", "🦖", "🦕", "🐊", "🦤", "🦆", "🐧", "🐣", "🦨", "🐢", "🐙", "🦑", "🦭", "🦦", "🦥", "🦔", "🐷", "🐉", "🐓", "🪱"]
-//            emojiCount = emojis.count
-//            emojis.shuffle()
-//        } label: {
-//            Image(systemName: "pawprint")
-//        }
-//    }
-
 }
 
 struct CardView: View {

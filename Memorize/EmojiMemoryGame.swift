@@ -9,11 +9,11 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-     static var emojis = ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"]
     
-    let themes = [
     
-        "vehicles" : ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"],
+    static let themes: [String : Theme<String> ] = [
+    
+        "vehicles" : Theme(themeTitle: "vehicles", themeContents: ["🚗", "🚙", "🏎", "🛻", "🚜", "🚌", "🚐", "🚛"], cardColor: .red, numberOfPairs: 8),
         "animals" : ["🦎", "🐸", "🐍", "🦜", "🦄", "🦖", "🦕", "🐊", "🦤", "🦆", "🐧", "🐣", "🦨", "🐢", "🐙", "🦑", "🦭", "🦦", "🦥", "🦔", "🐷", "🐉", "🐓", "🪱"],
         "faces" : ["🙂", "😄", "😎", "😋", "👽", "🥰", "🥸", "😇", "🥳", "😱", "🤠", "💩", "🥴", "😵", "🫥", "😑"],
         "flags" : ["🏳️", "🏴", "🏴‍☠️", "🏁", "🚩", "🇺🇸", "🇬🇧", "🇯🇵", "🇩🇰", "🇰🇷"],
@@ -27,16 +27,16 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
     
-    func changeTheme(to theme: String) {
-        switch theme {
-        case "animals": EmojiMemoryGame.emojis = EmojiMemoryGame.animalEmojis
-        case "faces": EmojiMemoryGame.emojis = EmojiMemoryGame.facesEmojis
-        case "flags": EmojiMemoryGame.emojis = EmojiMemoryGame.flagsEmojis
-        case "zodiacs": EmojiMemoryGame.emojis = EmojiMemoryGame.zodiacEmojis
-        case "random": EmojiMemoryGame.emojis = EmojiMemoryGame.randomEmojis
-        default: EmojiMemoryGame.emojis = EmojiMemoryGame.defaultEmojis
-        }
-    }
+//    func changeTheme(to theme: String) {
+//        switch theme {
+//        case "animals": EmojiMemoryGame.emojis = EmojiMemoryGame.animalEmojis
+//        case "faces": EmojiMemoryGame.emojis = EmojiMemoryGame.facesEmojis
+//        case "flags": EmojiMemoryGame.emojis = EmojiMemoryGame.flagsEmojis
+//        case "zodiacs": EmojiMemoryGame.emojis = EmojiMemoryGame.zodiacEmojis
+//        case "random": EmojiMemoryGame.emojis = EmojiMemoryGame.randomEmojis
+//        default: EmojiMemoryGame.emojis = EmojiMemoryGame.defaultEmojis
+//        }
+//    }
     
     @Published private var model: MemoryGame<String> = createMemoryGame()
     

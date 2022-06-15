@@ -8,9 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct Theme {
+struct Theme<ContentItems> {
     
-    var emojis: [String]
+    var themeTitle: String
+    var themeContents: [ContentItems]
     var cardColor: Color
     var numberOfPairs: Int
 }
