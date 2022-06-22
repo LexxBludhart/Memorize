@@ -6,12 +6,11 @@
 //
 
 import Foundation
-import SwiftUI
 
 struct Theme<ContentItems> {
     
     var themeTitle: String
     var themeContents: [ContentItems]
-    var cardColor: Color
+    var cardColor: String
     var numberOfPairs: Int
 }

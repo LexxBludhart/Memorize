@@ -14,6 +14,8 @@
 		4F30C4E2284FB474005FF2E3 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */; };
 		4F30C4E4284FB6B0005FF2E3 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */; };
 		4F6DF0462857872600EE027E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6DF0452857872600EE027E /* Theme.swift */; };
+		4FA9EBD928637679006CB28F /* ThemeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9EBD828637679006CB28F /* ThemeMenu.swift */; };
+		4FA9EBDC28638A9F006CB28F /* StringToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9EBDB28638A9F006CB28F /* StringToColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		4F6DF0452857872600EE027E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		4FA9EBD828637679006CB28F /* ThemeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMenu.swift; sourceTree = "<group>"; };
+		4FA9EBDB28638A9F006CB28F /* StringToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,11 +61,10 @@
 		4F0609972847DFB9007C2DAE /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
-				4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */,
-				4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */,
-				4F06099A2847DFB9007C2DAE /* ContentView.swift */,
-				4F0609982847DFB9007C2DAE /* MemorizeApp.swift */,
-				4F6DF0452857872600EE027E /* Theme.swift */,
+				4FA9EBDA28638A6B006CB28F /* Extensions */,
+				4FC22E5128636EB700F6BEF6 /* Model */,
+				4FC22E5028636EA500F6BEF6 /* View Model */,
+				4FC22E4F28636E9500F6BEF6 /* View */,
 				4F06099C2847DFBA007C2DAE /* Assets.xcassets */,
 				4F06099E2847DFBA007C2DAE /* Preview Content */,
 			);
@@ -74,6 +77,41 @@
 				4F06099F2847DFBA007C2DAE /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4FA9EBDA28638A6B006CB28F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4FA9EBDB28638A9F006CB28F /* StringToColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4FC22E4F28636E9500F6BEF6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F06099A2847DFB9007C2DAE /* ContentView.swift */,
+				4F0609982847DFB9007C2DAE /* MemorizeApp.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4FC22E5028636EA500F6BEF6 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		4FC22E5128636EB700F6BEF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */,
+				4F6DF0452857872600EE027E /* Theme.swift */,
+				4FA9EBD828637679006CB28F /* ThemeMenu.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,11 +184,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FA9EBD928637679006CB28F /* ThemeMenu.swift in Sources */,
 				4F30C4E2284FB474005FF2E3 /* MemoryGame.swift in Sources */,
 				4F06099B2847DFB9007C2DAE /* ContentView.swift in Sources */,
 				4F6DF0462857872600EE027E /* Theme.swift in Sources */,
 				4F0609992847DFB9007C2DAE /* MemorizeApp.swift in Sources */,
 				4F30C4E4284FB6B0005FF2E3 /* EmojiMemoryGame.swift in Sources */,
+				4FA9EBDC28638A9F006CB28F /* StringToColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
