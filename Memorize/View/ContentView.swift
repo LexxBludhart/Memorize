@@ -10,11 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: EmojiMemoryGame
     
+    @State var isAnimated = false
     
     var body: some View {
         
         VStack {
-            Text ("Theme Name")
+            Text ("\(viewModel.currentThemeName)")
                 .font(.largeTitle)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))] ) {
@@ -33,7 +34,7 @@ struct ContentView: View {
                 Spacer()
                 resetButton
                 Spacer()
-                Text ("SCORE:")
+                Text ("SCORE: \(viewModel.currentScore)")
                     .font(.largeTitle)
                     .foregroundColor(.gray)
                 Spacer()
@@ -53,9 +54,18 @@ struct ContentView: View {
         
         Button {
             viewModel.resetGame()
+            withAnimation(
+                Animation
+                    .default
+                    .repeatCount(2, autoreverses: true)
+            ) {
+                isAnimated.toggle()
+            }
         } label: {
             Image(systemName: "repeat")
                 .font(.largeTitle)
+                .rotationEffect(Angle(degrees: isAnimated ? 360: 0))
+//                .offset(y: isAnimated ? -100 : 0)
         }
     }
     
@@ -79,7 +89,8 @@ struct ContentView: View {
                 if card.isFaceUp {
                     shape.fill(.white)
                     shape.strokeBorder(lineWidth: 4)
-                    Text(card.content).font(.largeTitle)
+                    Text(card.content)
+                        .font(.largeTitle)
                 } else if card.isMatched {
                     shape.opacity(0)
                 } else {
