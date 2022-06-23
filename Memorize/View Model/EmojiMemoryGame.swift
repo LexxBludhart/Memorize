@@ -53,10 +53,12 @@ class EmojiMemoryGame: ObservableObject {
     func choose(_ card: MemoryGame<String>.Card) {
         model.choose(card)
         if model.addScore {
+            AudioManager.instance.playAudio(sound: AudioManager.SoundOption.noice)
             currentScore += 2
             model.addScore = false
         }
         if model.minusScore {
+            AudioManager.instance.playAudio(sound: AudioManager.SoundOption.fart)
             currentScore -= 1
             model.minusScore = false
         }

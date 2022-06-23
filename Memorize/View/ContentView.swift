@@ -17,6 +17,9 @@ struct ContentView: View {
         VStack {
             Text ("\(viewModel.currentThemeName)")
                 .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundColor(viewModel.currentTheme.cardColor.stringToColor())
+                .grayscale(0.6)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))] ) {
                     ForEach(viewModel.cards) { card in
@@ -36,14 +39,16 @@ struct ContentView: View {
                 Spacer()
                 Text ("SCORE: \(viewModel.currentScore)")
                     .font(.largeTitle)
-                    .foregroundColor(.gray)
+                    .fontWeight(.bold)
+                    .foregroundColor(viewModel.currentTheme.cardColor.stringToColor())
+                    .grayscale(0.6)
                 Spacer()
                 themeMenu
                 Spacer()
             }
             .padding(.top, 20)
             Spacer()
-                
+               
         }
         
 
@@ -53,6 +58,7 @@ struct ContentView: View {
     var resetButton: some View {
         
         Button {
+            AudioManager.instance.playAudio(sound: AudioManager.SoundOption.swoosh)
             viewModel.resetGame()
             withAnimation(
                 Animation
@@ -65,7 +71,6 @@ struct ContentView: View {
             Image(systemName: "repeat")
                 .font(.largeTitle)
                 .rotationEffect(Angle(degrees: isAnimated ? 360: 0))
-//                .offset(y: isAnimated ? -100 : 0)
         }
     }
     
@@ -89,6 +94,8 @@ struct ContentView: View {
                 if card.isFaceUp {
                     shape.fill(.white)
                     shape.strokeBorder(lineWidth: 4)
+                        .foregroundColor(color)
+                        .grayscale(0.6)
                     Text(card.content)
                         .font(.largeTitle)
                 } else if card.isMatched {
