@@ -19,6 +19,10 @@ class AudioManager {
         case swoosh
         case fart
         case noice
+        case woosh
+        case tacoBell
+        case paperFlip
+        case ding
     }
     
     func playAudio(sound: SoundOption) {

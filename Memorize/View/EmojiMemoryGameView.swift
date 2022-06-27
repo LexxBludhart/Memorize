@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmojiMemoryGameView.swift
 //  Memorize
 //
 //  Created by Rhett Levitz on 6/1/22.
@@ -7,26 +7,27 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @ObservedObject var viewModel: EmojiMemoryGame
+struct EmojiMemoryGameView: View {
+    @ObservedObject var game: EmojiMemoryGame
     
     @State var isAnimated = false
     
     var body: some View {
         
         VStack {
-            Text ("\(viewModel.currentThemeName)")
+            Text ("\(game.currentThemeName)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .foregroundColor(viewModel.currentTheme.cardColor.stringToColor())
+                .foregroundColor(game.currentTheme.cardColor.stringToColor())
                 .grayscale(0.6)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))] ) {
-                    ForEach(viewModel.cards) { card in
-                        CardView(card: card, color: viewModel.currentTheme.cardColor.stringToColor())
+                    ForEach(game.cards) { card in
+                        CardView(card: card, color: game.currentTheme.cardColor.stringToColor())
                             .aspectRatio(2/3, contentMode: .fit)
                             .onTapGesture {
-                                viewModel.choose(card)
+                                AudioManager.instance.playAudio(sound: .paperFlip)
+                                game.choose(card)
                             }
                     }
                 }
@@ -37,10 +38,10 @@ struct ContentView: View {
                 Spacer()
                 resetButton
                 Spacer()
-                Text ("SCORE: \(viewModel.currentScore)")
+                Text ("SCORE: \(game.currentScore)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .foregroundColor(viewModel.currentTheme.cardColor.stringToColor())
+                    .foregroundColor(game.currentTheme.cardColor.stringToColor())
                     .grayscale(0.6)
                 Spacer()
                 themeMenu
@@ -58,8 +59,8 @@ struct ContentView: View {
     var resetButton: some View {
         
         Button {
-            AudioManager.instance.playAudio(sound: AudioManager.SoundOption.swoosh)
-            viewModel.resetGame()
+            AudioManager.instance.playAudio(sound: .woosh)
+            game.resetGame()
             withAnimation(
                 Animation
                     .default
@@ -113,9 +114,9 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
             .preferredColorScheme(.dark)
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(game: game)
     }
 }
 
