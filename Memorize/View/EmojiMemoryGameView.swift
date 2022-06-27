@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+    
     @ObservedObject var game: EmojiMemoryGame
     
     @State var isAnimated = false
@@ -19,7 +20,7 @@ struct EmojiMemoryGameView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(game.currentTheme.cardColor.stringToColor())
-                .grayscale(0.6)
+                .grayscale(DrawingConstants.grayScale)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))] ) {
                     ForEach(game.cards) { card in
@@ -42,18 +43,15 @@ struct EmojiMemoryGameView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(game.currentTheme.cardColor.stringToColor())
-                    .grayscale(0.6)
+                    .grayscale(DrawingConstants.grayScale)
                 Spacer()
                 themeMenu
                 Spacer()
             }
             .padding(.top, 20)
             Spacer()
-               
+            
         }
-        
-
-        
     }
     
     var resetButton: some View {
@@ -64,7 +62,7 @@ struct EmojiMemoryGameView: View {
             withAnimation(
                 Animation
                     .default
-                    .repeatCount(2, autoreverses: true)
+                    .repeatCount(1, autoreverses: true)
             ) {
                 isAnimated.toggle()
             }
@@ -90,34 +88,43 @@ struct EmojiMemoryGameView: View {
         let color: Color
         
         var body: some View {
-            ZStack {
-                let shape = RoundedRectangle(cornerRadius: 15.0)
-                if card.isFaceUp {
-                    shape.fill(.white)
-                    shape.strokeBorder(lineWidth: 4)
-                        .foregroundColor(color)
-                        .grayscale(0.6)
-                    Text(card.content)
-                        .font(.largeTitle)
-                } else if card.isMatched {
-                    shape.opacity(0)
-                } else {
-                    shape.fill(color)
+            GeometryReader { geometry in
+                ZStack {
+                    let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
+                    if card.isFaceUp {
+                        shape.fill(.white)
+                        shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
+                            .foregroundColor(color)
+                            .grayscale(DrawingConstants.grayScale)
+                        Text(card.content).font(font(in: geometry.size))
+                    } else if card.isMatched {
+                        shape.opacity(0)
+                    } else {
+                        shape.fill(color)
+                            .grayscale(0.1)
+                    }
                 }
             }
         }
+        
+        private func font(in size: CGSize) -> Font {
+            Font.system(size: min(size.width, size.height) * DrawingConstants.fontScale)
+        }
     }
     
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let game = EmojiMemoryGame()
-        EmojiMemoryGameView(game: game)
-            .preferredColorScheme(.dark)
-        EmojiMemoryGameView(game: game)
+    private struct DrawingConstants {
+        static let cornerRadius: CGFloat = 15
+        static let lineWidth: CGFloat = 4
+        static let fontScale: CGFloat = 0.8
+        static let grayScale: CGFloat = 0.6
+    }
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            let game = EmojiMemoryGame()
+            EmojiMemoryGameView(game: game)
+                .preferredColorScheme(.dark)
+            EmojiMemoryGameView(game: game)
+        }
     }
 }
-
-

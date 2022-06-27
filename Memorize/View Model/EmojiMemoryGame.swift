@@ -9,8 +9,8 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-    var currentTheme = themes["flags"]!
-    var currentThemeName =  "Flags"
+    var currentTheme = themes["vehicles"]!
+    var currentThemeName =  "Vehicles"
     var currentScore = 0
     
     static let themes: [String : Theme<String> ] = [

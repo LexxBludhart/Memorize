@@ -49,7 +49,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             } else {
                 indexOfTheOneAndOnlyFaceUpCard = chosenIndex
             }
-//            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
