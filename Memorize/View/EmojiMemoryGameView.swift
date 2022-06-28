@@ -98,6 +98,10 @@ struct EmojiMemoryGameView: View {
                         shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
                             .foregroundColor(color)
                             .grayscale(DrawingConstants.grayScale)
+                        Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 110 - 90))
+                            .padding(6)
+                            .opacity(DrawingConstants.opacity)
+                            .foregroundColor(color)
                         Text(card.content).font(font(in: geometry.size))
                     } else if card.isMatched {
                         shape.opacity(0)
@@ -115,10 +119,9 @@ struct EmojiMemoryGameView: View {
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 13
-        static let lineWidth: CGFloat = 4
-        static let fontScale: CGFloat = 0.75
+        static let fontScale: CGFloat = 0.65
         static let grayScale: CGFloat = 0.6
+        static let opacity: CGFloat = 0.5
     }
     
     struct ContentView_Previews: PreviewProvider {
