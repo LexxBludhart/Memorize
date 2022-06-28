@@ -16,6 +16,7 @@
 		4F6DF0462857872600EE027E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6DF0452857872600EE027E /* Theme.swift */; };
 		4FA9EBD928637679006CB28F /* ThemeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9EBD828637679006CB28F /* ThemeMenu.swift */; };
 		4FA9EBDC28638A9F006CB28F /* StringToColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA9EBDB28638A9F006CB28F /* StringToColor.swift */; };
+		4FB2AB32286B58B1005631A3 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2AB31286B58B1005631A3 /* AspectVGrid.swift */; };
 		4FB8415F2864E69300141FC7 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB8415E2864E69300141FC7 /* AudioManager.swift */; };
 		4FB841612864EAA500141FC7 /* fart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FB841602864EAA500141FC7 /* fart.mp3 */; };
 		4FB841632864EAAD00141FC7 /* swoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FB841622864EAAD00141FC7 /* swoosh.mp3 */; };
@@ -37,6 +38,7 @@
 		4F6DF0452857872600EE027E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4FA9EBD828637679006CB28F /* ThemeMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeMenu.swift; sourceTree = "<group>"; };
 		4FA9EBDB28638A9F006CB28F /* StringToColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringToColor.swift; sourceTree = "<group>"; };
+		4FB2AB31286B58B1005631A3 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		4FB8415E2864E69300141FC7 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		4FB841602864EAA500141FC7 /* fart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart.mp3; sourceTree = "<group>"; };
 		4FB841622864EAAD00141FC7 /* swoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swoosh.mp3; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				4F06099A2847DFB9007C2DAE /* EmojiMemoryGameView.swift */,
+				4FB2AB31286B58B1005631A3 /* AspectVGrid.swift */,
 				4F0609982847DFB9007C2DAE /* MemorizeApp.swift */,
 				4FB8415E2864E69300141FC7 /* AudioManager.swift */,
 			);
@@ -223,6 +226,7 @@
 				4F0609992847DFB9007C2DAE /* MemorizeApp.swift in Sources */,
 				4F30C4E4284FB6B0005FF2E3 /* EmojiMemoryGame.swift in Sources */,
 				4FA9EBDC28638A9F006CB28F /* StringToColor.swift in Sources */,
+				4FB2AB32286B58B1005631A3 /* AspectVGrid.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

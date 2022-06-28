@@ -21,18 +21,20 @@ struct EmojiMemoryGameView: View {
                 .fontWeight(.bold)
                 .foregroundColor(game.currentTheme.cardColor.stringToColor())
                 .grayscale(DrawingConstants.grayScale)
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))] ) {
-                    ForEach(game.cards) { card in
-                        CardView(card: card, color: game.currentTheme.cardColor.stringToColor())
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                AudioManager.instance.playAudio(sound: .paperFlip)
-                                game.choose(card)
-                            }
-                    }
+            
+            AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
+                if card.isMatched && !card.isMatched {
+                    Rectangle().opacity(0)
+                } else {
+                    CardView(card: card, color: game.currentTheme.cardColor.stringToColor())
+                        .padding(5)
+                        .onTapGesture {
+                            AudioManager.instance.playAudio(sound: .paperFlip)
+                            game.choose(card)
+                        }
                 }
             }
+            
             .padding(.horizontal)
             
             HStack {
@@ -113,9 +115,9 @@ struct EmojiMemoryGameView: View {
     }
     
     private struct DrawingConstants {
-        static let cornerRadius: CGFloat = 15
+        static let cornerRadius: CGFloat = 13
         static let lineWidth: CGFloat = 4
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.75
         static let grayScale: CGFloat = 0.6
     }
     
