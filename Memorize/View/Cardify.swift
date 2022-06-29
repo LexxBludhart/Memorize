@@ -9,19 +9,20 @@ import SwiftUI
 
 struct Cardify: ViewModifier {
     var isFaceUp: Bool
-    var color: Color
+    
     func body(content: Content) -> some View {
         
         ZStack {
             let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
             if isFaceUp {
-                shape.fill().foregroundColor(.white)
+                shape
+                    .foregroundColor(.white)
                 shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                    .foregroundColor(color)
+//                    .foregroundColor(color)
                     .grayscale(DrawingConstants.grayScale)
                 content
             } else {
-                shape.fill(color)
+                shape.fill()
                     .grayscale(0.1)
             }
         }
@@ -32,5 +33,11 @@ struct Cardify: ViewModifier {
         static let lineWidth: CGFloat = 4
         static let grayScale: CGFloat = 0.6
         static let opacity: CGFloat = 0.5
+    }
+}
+
+extension View {
+    func cardify(isFaceUp: Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
     }
 }

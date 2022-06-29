@@ -23,7 +23,7 @@ struct EmojiMemoryGameView: View {
                 .grayscale(DrawingConstants.grayScale)
             
             AspectVGrid(items: game.cards, aspectRatio: 2/3) { card in
-                if card.isMatched && !card.isMatched {
+                if card.isMatched && !card.isFaceUp {
                     Rectangle().opacity(0)
                 } else {
                     CardView(card: card, color: game.currentTheme.cardColor.stringToColor())
@@ -41,7 +41,7 @@ struct EmojiMemoryGameView: View {
                 Spacer()
                 resetButton
                 Spacer()
-                Text ("SCORE: \(game.currentScore)")
+                Text ("SCORE: \(game.score)")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(game.currentTheme.cardColor.stringToColor())
@@ -92,24 +92,15 @@ struct EmojiMemoryGameView: View {
         var body: some View {
             GeometryReader { geometry in
                 ZStack {
-                    let shape = RoundedRectangle(cornerRadius: DrawingConstants.cornerRadius)
-                    if card.isFaceUp {
-                        shape.fill(.white)
-                        shape.strokeBorder(lineWidth: DrawingConstants.lineWidth)
-                            .foregroundColor(color)
-                            .grayscale(DrawingConstants.grayScale)
-                        Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 110 - 90))
-                            .padding(6)
-                            .opacity(DrawingConstants.opacity)
-                            .foregroundColor(color)
-                        Text(card.content).font(font(in: geometry.size))
-                    } else if card.isMatched {
-                        shape.opacity(0)
-                    } else {
-                        shape.fill(color)
-                            .grayscale(0.1)
-                    }
+                    Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 110 - 90))
+                        .padding(6)
+                        .opacity(DrawingConstants.opacity)
+                        .foregroundColor(color)
+                    Text(card.content).font(font(in: geometry.size))
                 }
+                .cardify(isFaceUp: card.isFaceUp)
+                .foregroundColor(color)
+                .grayscale(0.1)
             }
         }
         
@@ -133,3 +124,4 @@ struct EmojiMemoryGameView: View {
         }
     }
 }
+

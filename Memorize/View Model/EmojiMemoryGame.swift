@@ -11,7 +11,9 @@ class EmojiMemoryGame: ObservableObject {
     
     var currentTheme = themes["vehicles"]!
     var currentThemeName =  "Vehicles"
-    var currentScore = 0
+    var score: Int {
+        model.score
+    }
     
     static let themes: [String : Theme<String> ] = [
     
@@ -52,16 +54,6 @@ class EmojiMemoryGame: ObservableObject {
     
     func choose(_ card: MemoryGame<String>.Card) {
         model.choose(card)
-        if model.addScore {
-            AudioManager.instance.playAudio(sound: .ding)
-            currentScore += 2
-            model.addScore = false
-        }
-        if model.minusScore {
-            AudioManager.instance.playAudio(sound: .fart)
-            currentScore -= 1
-            model.minusScore = false
-        }
     }
     
     func randomThemeChooser() -> Theme<String> {
@@ -80,7 +72,7 @@ class EmojiMemoryGame: ObservableObject {
     func resetGame() {
         let randomTheme = randomThemeChooser()
         self.model = EmojiMemoryGame.createMemoryGame(with: randomTheme)
-        currentScore = 0
+        model.score = 0
     }
 }
 

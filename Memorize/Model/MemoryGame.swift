@@ -8,16 +8,18 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
+    
+    var score = 0
+    let matchPoint = 2
+    let matchPenalty = 1
+    
     private(set) var cards: Array<Card>
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get { cards.indices.filter ({ cards[$0].isFaceUp}).oneAndOnly }
         set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
     }
-    
-    var addScore = false
-    
-    var minusScore = false
+
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
@@ -28,21 +30,24 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content {
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
-                    addScore = true
-                } else {
-                    if !cards[chosenIndex].hasBeenSeen {
+                    
+                    AudioManager.instance.playAudio(sound: .ding)
+                    score += matchPoint
+                }
+                else {
+                    if cards[chosenIndex].hasBeenSeen {
+                        AudioManager.instance.playAudio(sound: .fart)
+                        score -= matchPenalty
+                    }
+                    else {
                         cards[chosenIndex].hasBeenSeen = true
                     }
-                    if !cards[potentialMatchIndex].hasBeenSeen {
+                    if cards[potentialMatchIndex].hasBeenSeen {
+                        AudioManager.instance.playAudio(sound: .fart)
+                        score -= matchPenalty
+                    }
+                    else {
                         cards[potentialMatchIndex].hasBeenSeen = true
-                    } else {
-                        if cards[chosenIndex].hasBeenSeen {
-                            minusScore = true
-                        }
-                        if cards[potentialMatchIndex].hasBeenSeen {
-                            minusScore = true
-                        }
-                        
                     }
                 }
                 cards[chosenIndex].isFaceUp = true
