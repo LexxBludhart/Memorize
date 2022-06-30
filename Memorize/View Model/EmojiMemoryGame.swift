@@ -9,6 +9,8 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
+    typealias Card = MemoryGame<String>.Card
+    
     @Published private var model: MemoryGame<String>
     
     var cards: Array<MemoryGame<String>.Card> {
@@ -33,7 +35,7 @@ class EmojiMemoryGame: ObservableObject {
         
         "zodiacs" : Theme(themeTitle: "Zodiacs", themeContents: ["♈️", "♉️", "♊️", "♋️", "♌️", "♍️", "♎️", "♏️", "♐️", "♑️", "♒️", "♓️"], cardColor: "purple", numberOfPairs: 12),
         
-        "random" : Theme(themeTitle: "Random", themeContents: ["🥨", "🛁", "📚", "🃏", "🧸", "🖥", "🚀", "🏕", "🏆", "🫧"], cardColor: "gray", numberOfPairs: 10)
+        "miscellaneous" : Theme(themeTitle: "Miscellaneous", themeContents: ["🥨", "🛁", "📚", "🃏", "🧸", "🖥", "🚀", "🏕", "🏆", "🫧"], cardColor: "gray", numberOfPairs: 10)
     ]
 
     
