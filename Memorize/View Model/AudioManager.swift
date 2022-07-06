@@ -23,6 +23,11 @@ class AudioManager {
         case tacoBell
         case paperFlip
         case ding
+        case shuffle
+        case shuffle2
+        case swoosh2
+        case yayying
+        case suck
     }
     
     func playAudio(sound: SoundOption) {

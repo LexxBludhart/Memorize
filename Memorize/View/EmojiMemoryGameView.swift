@@ -38,12 +38,11 @@ struct EmojiMemoryGameView: View {
     }
     
     var body: some View {
-        
+        ZStack(alignment: .bottom) {
         VStack {
             title
             gameBody
                 .padding(.horizontal)
-            deckBody
             
             HStack {
                 Spacer()
@@ -56,6 +55,9 @@ struct EmojiMemoryGameView: View {
             }
             .padding(.top, 20)
             Spacer()
+        }
+        deckBody
+                .padding(.bottom, 80)
         }
     }
     
@@ -110,6 +112,7 @@ struct EmojiMemoryGameView: View {
                 // "deal" the cards
             for card in game.cards {
                 withAnimation(dealAnimation(for: card)) {
+                    AudioManager.instance.playAudio(sound: .shuffle2)
                         deal(card)
                 }
             }
@@ -122,6 +125,7 @@ struct EmojiMemoryGameView: View {
         Button {
             AudioManager.instance.playAudio(sound: .woosh)
             withAnimation(Animation.easeInOut) {
+                dealt = []
                 game.resetGame()
             }
             withAnimation(
@@ -142,6 +146,7 @@ struct EmojiMemoryGameView: View {
         
         Button {
             withAnimation {
+                AudioManager.instance.playAudio(sound: .swoosh2)
                 game.shuffle()
             }
         } label: {
@@ -152,8 +157,8 @@ struct EmojiMemoryGameView: View {
     
     private struct CardConstants {
         static let aspectRatio: CGFloat = 2/3
-        static let dealDuration: Double = 0.5
-        static let totalDealDuration: Double = 2
+        static let dealDuration: Double = 0.3
+        static let totalDealDuration: Double = 1
         static let undealHeight: CGFloat = 90
         static let undealWidth = undealHeight * aspectRatio
     }
@@ -165,7 +170,7 @@ struct EmojiMemoryGameView: View {
         var body: some View {
             GeometryReader { geometry in
                 ZStack {
-                    Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: 110 - 90))
+                    Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: (1-card.bonusTimeRemaining)*360-90))
                         .padding(6)
                         .opacity(DrawingConstants.opacity)
                         .foregroundColor(color)
