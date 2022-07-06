@@ -98,7 +98,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         let id: Int
         var hasBeenSeen = false
         
-        
+
         
         // MARK: Bonus Time
 
@@ -125,7 +125,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
        }
 
        var hasEarnedBonus: Bool {
-           isMatched && !isMatched && bonusTimeRemaining > 0
+           isMatched && bonusTimeRemaining > 0
        }
 
        var isConsumingBonusTime: Bool {
@@ -145,16 +145,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     }
 }
 
-extension Array {
-    var oneAndOnly: Element? {
-        if count == 1 {
-            return first
-        } else {
-            return nil
-        }
-    }
-    
-}
+
 
 
 

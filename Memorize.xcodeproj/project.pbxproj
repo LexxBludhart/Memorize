@@ -28,6 +28,7 @@
 		4FB841612864EAA500141FC7 /* fart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FB841602864EAA500141FC7 /* fart.mp3 */; };
 		4FB841632864EAAD00141FC7 /* swoosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FB841622864EAAD00141FC7 /* swoosh.mp3 */; };
 		4FB841652864EAB300141FC7 /* noice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FB841642864EAB300141FC7 /* noice.mp3 */; };
+		4FBBCF60287609DB00B48804 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBBCF5F287609DB00B48804 /* Array.swift */; };
 		4FC0E502286A191900C635BD /* woosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FC0E501286A191900C635BD /* woosh.mp3 */; };
 		4FC0E504286A1A3E00C635BD /* tacoBell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FC0E503286A1A3E00C635BD /* tacoBell.mp3 */; };
 		4FC0E506286A1B7D00C635BD /* paperFlip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FC0E505286A1B7D00C635BD /* paperFlip.mp3 */; };
@@ -57,6 +58,7 @@
 		4FB841602864EAA500141FC7 /* fart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fart.mp3; sourceTree = "<group>"; };
 		4FB841622864EAAD00141FC7 /* swoosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = swoosh.mp3; sourceTree = "<group>"; };
 		4FB841642864EAB300141FC7 /* noice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = noice.mp3; sourceTree = "<group>"; };
+		4FBBCF5F287609DB00B48804 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4FC0E501286A191900C635BD /* woosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woosh.mp3; sourceTree = "<group>"; };
 		4FC0E503286A1A3E00C635BD /* tacoBell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tacoBell.mp3; sourceTree = "<group>"; };
 		4FC0E505286A1B7D00C635BD /* paperFlip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = paperFlip.mp3; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				4FA9EBDB28638A9F006CB28F /* StringToColor.swift */,
+				4FBBCF5F287609DB00B48804 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				4F6DF0462857872600EE027E /* Theme.swift in Sources */,
 				4F0609992847DFB9007C2DAE /* MemorizeApp.swift in Sources */,
 				4F30C4E4284FB6B0005FF2E3 /* EmojiMemoryGame.swift in Sources */,
+				4FBBCF60287609DB00B48804 /* Array.swift in Sources */,
 				4FA9EBDC28638A9F006CB28F /* StringToColor.swift in Sources */,
 				4FB2AB32286B58B1005631A3 /* AspectVGrid.swift in Sources */,
 			);

@@ -12,6 +12,7 @@ struct EmojiMemoryGameView: View {
     @ObservedObject var game: EmojiMemoryGame
     
     @State var isAnimated = false
+    @State var isAnimated2 = false
     
     @Namespace private var dealingNamespace
     
@@ -39,24 +40,24 @@ struct EmojiMemoryGameView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-        VStack {
-            title
-            gameBody
-                .padding(.horizontal)
-            
-            HStack {
-                Spacer()
-                resetButton
-                Spacer()
-                scoreTitle
-                Spacer()
-                shuffleButton
+            VStack {
+                title
+                gameBody
+                    .padding(.horizontal)
+                
+                HStack {
+                    Spacer()
+                    resetButton
+                    Spacer()
+                    scoreTitle
+                    Spacer()
+                    shuffleButton
+                    Spacer()
+                }
+                .padding(.top, 20)
                 Spacer()
             }
-            .padding(.top, 20)
-            Spacer()
-        }
-        deckBody
+            deckBody
                 .padding(.bottom, 80)
         }
     }
@@ -109,11 +110,11 @@ struct EmojiMemoryGameView: View {
         .frame(width: CardConstants.undealWidth, height: CardConstants.undealHeight)
         .foregroundColor(game.currentTheme.cardColor.stringToColor())
         .onTapGesture {
-                // "deal" the cards
+            // "deal" the cards
             for card in game.cards {
                 withAnimation(dealAnimation(for: card)) {
                     AudioManager.instance.playAudio(sound: .shuffle2)
-                        deal(card)
+                    deal(card)
                 }
             }
         }
@@ -145,13 +146,22 @@ struct EmojiMemoryGameView: View {
     var shuffleButton: some View {
         
         Button {
-            withAnimation {
-                AudioManager.instance.playAudio(sound: .swoosh2)
+            AudioManager.instance.playAudio(sound: .swoosh2)
+            withAnimation(Animation.easeInOut) {
                 game.shuffle()
             }
+            withAnimation(
+                Animation
+                .default
+                .repeatCount(1, autoreverses: true)
+            ) {
+                isAnimated2.toggle()
+            }
+            
         } label: {
             Image(systemName: "shuffle")
                 .font(.largeTitle)
+                .rotation3DEffect(Angle.degrees(isAnimated2 ? 360 : 0), axis: (0, 1, 0))
         }
     }
     
@@ -164,16 +174,30 @@ struct EmojiMemoryGameView: View {
     }
     
     struct CardView: View {
-        let card: MemoryGame<String>.Card
+        let card: EmojiMemoryGame.Card
         let color: Color
+        
+        @State private var animatedBonusRemaining : Double = 0
         
         var body: some View {
             GeometryReader { geometry in
                 ZStack {
-                    Pie(startAngle: Angle(degrees: 0 - 90), endAngle: Angle(degrees: (1-card.bonusTimeRemaining)*360-90))
-                        .padding(6)
-                        .opacity(DrawingConstants.opacity)
-                        .foregroundColor(color)
+                    Group {
+                        if card.isConsumingBonusTime {
+                            Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: (1-animatedBonusRemaining)*360-90))
+                                .onAppear {
+                                    animatedBonusRemaining = card.bonusTimeRemaining
+                                    withAnimation(.linear(duration: card.bonusTimeRemaining)) {
+                                        animatedBonusRemaining = 0
+                                    }
+                                }
+                        } else {
+                            Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: (1-card.bonusTimeRemaining)*360-90))
+                        }
+                    }
+                    .padding(6)
+                    .opacity(DrawingConstants.opacity)
+                    .foregroundColor(color)
                     Text(card.content)
                         .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
                         .animation(.easeInOut(duration: 1), value: card.isMatched)
