@@ -9,20 +9,35 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     
+    // MARK: Variables/Constants
+    
     private(set) var cards: Array<Card>
     
     var score = 0
-    let matchPoint = 2
-    let matchPenalty = 1
-    let increasePairsMatched = 1
     var pairsMatched = 0
-    
+    private let increasePairsMatched = 1
+    private let matchPoint = 2
+    private let matchPenalty = 1
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get { cards.indices.filter ({ cards[$0].isFaceUp}).oneAndOnly }
         set { cards.indices.forEach { cards[$0].isFaceUp = ($0 == newValue) } }
     }
+    
+    // MARK: Initializers
 
+    init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
+        cards = []
+        //add numberOfPairsOfCards x 2 cards to cards array
+        for pairIndex in 0..<numberOfPairsOfCards {
+            let content = createCardContent(pairIndex)
+            cards.append(Card(content: content, id: pairIndex * 2))
+            cards.append(Card(content: content, id: pairIndex * 2 + 1))
+        }
+        cards.shuffle()
+    }
+    
+    // MARK: Game Logic
     
     mutating func choose(_ card: Card) {
         if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
@@ -60,24 +75,11 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
-    
-    
     mutating func shuffle() {
         cards.shuffle()
     }
     
-    init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-        cards = []
-        //add numberOfPairsOfCards x 2 cards to cards array
-        for pairIndex in 0..<numberOfPairsOfCards {
-            let content = createCardContent(pairIndex)
-            cards.append(Card(content: content, id: pairIndex * 2))
-            cards.append(Card(content: content, id: pairIndex * 2 + 1))
-        }
-        cards.shuffle()
-    }
-    
-    
+    // MARK: Card Logic
     
     struct Card: Identifiable {
         var isFaceUp = false {

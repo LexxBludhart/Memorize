@@ -8,10 +8,10 @@
 import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
-    
-//    static let instance = EmojiMemoryGame()
-    
+        
     typealias Card = MemoryGame<String>.Card
+    
+    // MARK: Variables/Constants
     
     @Published private var model: MemoryGame<String>
     
@@ -20,12 +20,15 @@ class EmojiMemoryGame: ObservableObject {
     var score: Int {
         model.score
     }
+    
     var cards: Array<MemoryGame<String>.Card> {
         model.cards
     }
+    
     var gameFinsihed: Bool {
         currentNumberOfPairs == model.pairsMatched
     }
+    
     lazy var currentNumberOfPairs = min(currentTheme.numberOfPairs, currentTheme.themeContents.count)
     
     static let themes: [String : Theme<String> ] = [
@@ -43,6 +46,7 @@ class EmojiMemoryGame: ObservableObject {
         "miscellaneous" : Theme(themeTitle: "Miscellaneous", themeContents: ["🥨", "🛁", "📚", "🃏", "🧸", "🖥", "🚀", "🏕", "🏆", "🫧"], cardColor: "gray", numberOfPairs: 14)
     ]
     
+    // MARK: Initializers
     
     init() {
         model = EmojiMemoryGame.createMemoryGame(with: currentTheme)
