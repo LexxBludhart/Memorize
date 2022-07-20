@@ -63,7 +63,7 @@ class EmojiMemoryGame: ObservableObject {
     
     func choose(_ card: MemoryGame<String>.Card) {
         model.choose(card)
-        if model.pairsMatched == currentNumberOfPairs {
+        if gameFinsihed {
             gameFinishedAudio()
         }
     }
@@ -92,6 +92,7 @@ class EmojiMemoryGame: ObservableObject {
     func resetGame() {
         let randomTheme = randomThemeChooser()
         self.model = EmojiMemoryGame.createMemoryGame(with: randomTheme)
+        currentNumberOfPairs = min(currentTheme.numberOfPairs, currentTheme.themeContents.count)
     }
     
     func shuffle() {

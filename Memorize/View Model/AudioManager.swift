@@ -28,6 +28,8 @@ class AudioManager {
         case swoosh2
         case yayying
         case suck
+        case pop
+        case dingdong
     }
     
     func playAudio(sound: SoundOption) {

@@ -18,6 +18,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     private let increasePairsMatched = 1
     private let matchPoint = 2
     private let matchPenalty = 1
+    private let bonusPoint = 1
     
     private var indexOfTheOneAndOnlyFaceUpCard: Int? {
         get { cards.indices.filter ({ cards[$0].isFaceUp}).oneAndOnly }
@@ -50,7 +51,10 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                     cards[potentialMatchIndex].isMatched = true
                     pairsMatched += increasePairsMatched
                     AudioManager.instance.playAudio(sound: .ding)
-                    score += matchPoint                    
+                    score += matchPoint
+                    if card.bonusTimeRemaining > 0 {
+                        score += bonusPoint
+                    }
                 }
                 else {
                     if cards[chosenIndex].hasBeenSeen {
@@ -104,7 +108,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         
         // MARK: Bonus Time
 
-       var bonusTimeLimit: TimeInterval = 6
+       var bonusTimeLimit: TimeInterval = 3
 
        private var faceUpTime: TimeInterval {
            if let lastFaceUpDate = self.lastFaceUpDate {

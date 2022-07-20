@@ -59,7 +59,7 @@ struct EmojiMemoryGameView: View {
                         if card.isConsumingBonusTime {
                             Pie(startAngle: Angle(degrees: 0-90), endAngle: Angle(degrees: (1-animatedBonusRemaining)*360-90))
                                 .onAppear {
-                                    animatedBonusRemaining = card.bonusTimeRemaining
+                                    animatedBonusRemaining = card.bonusRemaining
                                     withAnimation(.linear(duration: card.bonusTimeRemaining)) {
                                         animatedBonusRemaining = 0
                                     }
@@ -74,6 +74,7 @@ struct EmojiMemoryGameView: View {
                     Text(card.content)
                         .rotationEffect(Angle.degrees(card.isMatched ? 360 : 0))
                         .animation(.easeInOut(duration: 1), value: card.isMatched)
+//                        .animation(Animation.linear(duration: 1).repeatForever(autoreverses: false), value: card.isMatched)
                         .font(.system(size: DrawingConstants.fontSize))
                         .scaleEffect(scale(thatFits: geometry.size))
                 }
@@ -120,7 +121,9 @@ struct EmojiMemoryGameView: View {
                     .transition(AnyTransition.asymmetric(insertion: .identity, removal: .opacity))
                     .zIndex(zIndex(of: card))
                     .onTapGesture {
-                        AudioManager.instance.playAudio(sound: .paperFlip)
+                        if !card.isFaceUp {
+                            AudioManager.instance.playAudio(sound: .paperFlip)
+                        }
                         withAnimation(.easeInOut(duration: 0.4)) {
                             game.choose(card)
                         }
