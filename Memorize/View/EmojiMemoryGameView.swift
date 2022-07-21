@@ -35,7 +35,7 @@ struct EmojiMemoryGameView: View {
                     Spacer()
                     scoreTitle
                     Spacer()
-                    shuffleButton
+                    ThemeChooser()
                     Spacer()
                 }
                 .padding(.top, 20)

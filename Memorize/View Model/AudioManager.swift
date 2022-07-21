@@ -30,6 +30,8 @@ class AudioManager {
         case suck
         case pop
         case dingdong
+        case disappear
+        case iphoneMessage
     }
     
     func playAudio(sound: SoundOption) {

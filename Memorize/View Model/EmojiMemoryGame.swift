@@ -17,6 +17,7 @@ class EmojiMemoryGame: ObservableObject {
     
     var currentTheme = themes["vehicles"]!
     var currentThemeName =  "Vehicles"
+    
     var score: Int {
         model.score
     }

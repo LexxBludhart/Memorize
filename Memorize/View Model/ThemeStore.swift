@@ -8,7 +8,11 @@
 import Foundation
 import SwiftUI
 
+
 class ThemeStore: ObservableObject {
+    
+    var currentTheme = themes["vehicles"]!
+    var currentThemeName =  "Vehicles"
     
 //    let name: String
     

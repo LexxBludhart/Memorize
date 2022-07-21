@@ -12,17 +12,23 @@ import SwiftUI
 struct LaunchView: View {
     
     @State private var showLoadingImage: Bool = false
-    @State var showLaunchView: Bool = true
+    @Binding var showLaunchView: Bool
+    var launchImage = Image("eggplant")
+    var launchImage2 = Image("eggplant")
+    var isAnimated = true
     
     var body: some View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
             if showLoadingImage {
-                Image("eggplant")
+                launchImage
                     .resizable()
-                    .frame(width: 230, height: 230)
-                    .transition(AnyTransition.scale.animation(.easeIn(duration: 6.0)))
+                    .frame(width: 375, height: 390)
+                    .shadow(color: .white, radius: 50.0, x: 5.0, y: 10.0)
+                    .ignoresSafeArea()
+                    .transition(AnyTransition.scale.animation(.easeInOut(duration: 6.0).delay(0.25)).combined(with: .opacity.animation(.easeIn(duration: 6.0))))
+                
             }
                 
         }
@@ -30,11 +36,15 @@ struct LaunchView: View {
             showLoadingImage.toggle()
             AudioManager.instance.playAudio(sound: .dingdong)
         }
+        .onTapGesture {
+            showLaunchView = false
+            AudioManager.instance.playAudio(sound: .disappear)
+        }
     }
 }
 
 struct LaunchView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchView()
+        LaunchView(showLaunchView: .constant(true))
     }
 }

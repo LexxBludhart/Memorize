@@ -23,6 +23,8 @@
 		4F1EE7CB28887EE40044A607 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EE7CA28887EE40044A607 /* LaunchView.swift */; };
 		4F30C4E2284FB474005FF2E3 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */; };
 		4F30C4E4284FB6B0005FF2E3 /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */; };
+		4F673D9B2889A90D001D2FC9 /* disappear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F673D9A2889A90D001D2FC9 /* disappear.mp3 */; };
+		4F673D9D2889BBAC001D2FC9 /* iphoneMessage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4F673D9C2889BBAC001D2FC9 /* iphoneMessage.mp3 */; };
 		4F6DF0462857872600EE027E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6DF0452857872600EE027E /* Theme.swift */; };
 		4FA16668287496B200E9F6BF /* shuffle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FA16667287496B200E9F6BF /* shuffle.mp3 */; };
 		4FA1666A287497E500E9F6BF /* shuffle2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4FA16669287497E500E9F6BF /* shuffle2.mp3 */; };
@@ -62,6 +64,8 @@
 		4F1EE7CA28887EE40044A607 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		4F30C4E1284FB474005FF2E3 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		4F30C4E3284FB6B0005FF2E3 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		4F673D9A2889A90D001D2FC9 /* disappear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = disappear.mp3; sourceTree = "<group>"; };
+		4F673D9C2889BBAC001D2FC9 /* iphoneMessage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = iphoneMessage.mp3; sourceTree = "<group>"; };
 		4F6DF0452857872600EE027E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		4FA16667287496B200E9F6BF /* shuffle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shuffle.mp3; sourceTree = "<group>"; };
 		4FA16669287497E500E9F6BF /* shuffle2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shuffle2.mp3; sourceTree = "<group>"; };
@@ -119,20 +123,22 @@
 				4FC22E4F28636E9500F6BEF6 /* View */,
 				4F06099C2847DFBA007C2DAE /* Assets.xcassets */,
 				4F1EE7C828887D950044A607 /* eggplant.png */,
-				4FB841642864EAB300141FC7 /* noice.mp3 */,
-				4FB841622864EAAD00141FC7 /* swoosh.mp3 */,
-				4FB841602864EAA500141FC7 /* fart.mp3 */,
-				4FC0E501286A191900C635BD /* woosh.mp3 */,
-				4FC0E503286A1A3E00C635BD /* tacoBell.mp3 */,
-				4FC0E505286A1B7D00C635BD /* paperFlip.mp3 */,
 				4FC0E507286A1C5A00C635BD /* ding.mp3 */,
 				4F1EE7C428887B9B0044A607 /* dingdong.mp3 */,
+				4F673D9A2889A90D001D2FC9 /* disappear.mp3 */,
+				4FB841602864EAA500141FC7 /* fart.mp3 */,
+				4F673D9C2889BBAC001D2FC9 /* iphoneMessage.mp3 */,
+				4FB841642864EAB300141FC7 /* noice.mp3 */,
+				4FC0E505286A1B7D00C635BD /* paperFlip.mp3 */,
+				4F1EE7C2288879BF0044A607 /* pop.mp3 */,
 				4FA16667287496B200E9F6BF /* shuffle.mp3 */,
 				4FA16669287497E500E9F6BF /* shuffle2.mp3 */,
-				4FA1666B28749BB700E9F6BF /* swoosh2.mp3 */,
-				4FA1666D2874AF6A00E9F6BF /* yayying.mp3 */,
 				4FA1666F2874AFFA00E9F6BF /* suck.mp3 */,
-				4F1EE7C2288879BF0044A607 /* pop.mp3 */,
+				4FB841622864EAAD00141FC7 /* swoosh.mp3 */,
+				4FA1666B28749BB700E9F6BF /* swoosh2.mp3 */,
+				4FC0E503286A1A3E00C635BD /* tacoBell.mp3 */,
+				4FC0E501286A191900C635BD /* woosh.mp3 */,
+				4FA1666D2874AF6A00E9F6BF /* yayying.mp3 */,
 				4F06099E2847DFBA007C2DAE /* Preview Content */,
 			);
 			path = Memorize;
@@ -261,6 +267,7 @@
 				4F1EE7C728887C290044A607 /* LaunchScreen.storyboard in Resources */,
 				4F06099D2847DFBA007C2DAE /* Assets.xcassets in Resources */,
 				4FB841612864EAA500141FC7 /* fart.mp3 in Resources */,
+				4F673D9D2889BBAC001D2FC9 /* iphoneMessage.mp3 in Resources */,
 				4FA16668287496B200E9F6BF /* shuffle.mp3 in Resources */,
 				4F1EE7C3288879BF0044A607 /* pop.mp3 in Resources */,
 				4FB841652864EAB300141FC7 /* noice.mp3 in Resources */,
@@ -268,6 +275,7 @@
 				4FB841632864EAAD00141FC7 /* swoosh.mp3 in Resources */,
 				4FA1666E2874AF6A00E9F6BF /* yayying.mp3 in Resources */,
 				4FA1666A287497E500E9F6BF /* shuffle2.mp3 in Resources */,
+				4F673D9B2889A90D001D2FC9 /* disappear.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
